@@ -14,6 +14,7 @@ body{
 
 .navbar li{
     float: left;
+    transition: box-shadow .15s ease-in-out;
 }
 
 .navbar li a{
@@ -23,8 +24,11 @@ body{
     text-decoration: none;
 }
 
-.navbar li:not(.active):hover{
-    transform: scale(1.3);
+.navbar li:not(.active, .icon):hover{
+    box-shadow:
+        inset 0 10px 0 0 black,
+        inset 0 -10px 0 0 black;
+    font-weight: bold;
 }
 
 .navbar .icon{
