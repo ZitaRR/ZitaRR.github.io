@@ -1,22 +1,22 @@
 body{
     margin: 0;
-    margin-bottom: 60px;
     padding: 0;
     font-family: 'Fredoka', sans-serif;
     color: rgb(var(--main));
     background-color: rgb(var(--dark));
-    --light: 255, 255, 255;
     --dark: 28, 28, 28;
     --main: 106, 255, 151;
 }
 
 html{
     font-size: 14px;
+    scroll-behavior: smooth;
 }
 
 .navbar{
     position: sticky;
     top: 0;
+    background-color: rgb(var(--dark));
 }
 
 .navbar.responsive li:not(.icon){
@@ -62,7 +62,11 @@ html{
 }
 
 .frame-buttom{
-    border-bottom: 1px solid rgba(var(--light), .2);
+    border-bottom: 1px solid grey;
+}
+
+.frame-top{
+    border-top: 1px solid grey;
 }
 
 a{
@@ -79,6 +83,12 @@ a:visited, a:link, a:active{
 
 a:hover{
     font-weight: bold;
+    cursor: pointer;
+}
+
+section{
+    height: 100vh;
+    margin: 0 1rem;
 }
 
 .fa.fa-bars{
@@ -100,22 +110,55 @@ a:hover{
     border-radius: 50%;
 }
 
-.intro{
+.flex-container{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-.intro h1{
+.text-container{
+    text-align: center;
+    line-height: 1.2rem;
+}
+
+section h1{
     font-size: 3.5rem;
     font-weight: normal;
+}
+
+section *{
     margin: 1rem 0;
     text-align: center;
 }
 
-#page{
-    margin: 8vh 2vw;
+footer{
+    display: flex;
+    flex-direction: column;
+    height: 16vh;
+    justify-content: center;
+}
+
+footer div{
+    justify-content: center;
+    text-align: center;
+    margin: .2rem;
+    height: 100%;
+    line-height: 0;
+}
+
+footer .social{
+    display: flex;
+    flex: 0 0;
+    align-items: flex-end;
+    justify-content: center;
+    flex-direction: row;
+    margin-bottom: 1rem;
+}
+
+footer .social span{
+    font-size: 1.4rem;
+    margin: 0 .5rem;
 }
 
 ::-webkit-scrollbar{
@@ -135,13 +178,27 @@ a:hover{
 }
 
 @media screen and (min-width: 768px){
+    body{
+        margin: 0;
+    }
+
     html{
         font-size: 20px;
     }
 
+    section{
+        margin: 0 6rem;
+    }
+
+    footer{
+        height: 20vh;
+    }
+
     .navbar{
+        position: fixed;
         margin: 0 5rem;
         padding-top: 4rem;
+        background: transparent;
     }
 
     .navbar li:not(.active, .icon):hover{

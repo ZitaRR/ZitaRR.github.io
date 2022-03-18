@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300&display=swap" rel="stylesheet">
     <script src="./js/main.js"></script>
+    <script src="https://kit.fontawesome.com/2ffb725c54.js" crossorigin="anonymous"></script>
     <title>Haegg</title>
 </head>
 <body>
@@ -18,20 +18,58 @@
                     <i class="fa fa-bars"></i>
                 </a>
             </li>
-            <li class="active">
-                <a href="./">Home</a>
+            <li id="nav-home" class="active">
+                <a onclick="goToSection('home')">Home</a>
             </li>
-            <li>
-                <a href="./visitor.html">You</a>
+            <li id="nav-about">
+                <a onclick="goToSection('about')">About</a>
             </li>
         </ul>
     </nav>
     <div id="page">
-        <div class="intro">
+        <section id="home" class="flex-container">
             <img class="round-image" src="assets/me.jpg" alt="it's a me">
             <h1>Nicklas Häggqvist</h1>
-            <p>Student & Game-Developer Enthusiast</p>
-        </div>
+            <p>Software Student & Game-Developer Enthusiast</p>
+        </section>
+        <section id="about" class="flex-container">
+            <p class="text-container">
+                Gaming has always been a big part of my life and as a kid I was intrigued by it.
+                 <br>
+                How could something so small as a press of a button have such a major impact on the TV-screen?
+                <br><br>
+                Since then I've always been fascinated about game-development and it's also the reason as to why I got into programming.
+                <br>
+                During my time in upper secondary school, I studied game-development and I got introduced to the game engine <i>Unity3D</i>.
+                <br>
+                Though it has its' flaws it was a perfect fit for me.
+                <br><br>
+                .NET and C# was my first set of tools I used when I got into programming and therefore I have a weak spot for them. With that said though;
+                <br>
+                I love to learn new things too and I'm always up for a new challenge, regardless of how daunting it might be!
+                <br>
+            </p>
+        </section>
+        <footer class="frame-top">
+            <div>
+                <p><span class="fa-solid fa-envelope"></span> E-mail</p>
+                <a href="mailto: haeggqvist1998@outlook.com">Haeggqvist1998@outlook.com</a>
+            </div>
+            <div class="social">
+                <a href="https://github.com/ZitaRR" target="_blank" rel="noopener noreferrer">
+                    <span class="fab fa-github"></span>
+                </a>
+                <a href="https://www.linkedin.com/in/nicklas-haggqvist/" target="_blank" rel="noopener noreferrer">
+                    <span class="fab fa-linkedin"></span>
+                </a>
+                <a href="https://discord.com/users/171731188900298752" target="_blank" rel="noopener noreferrer">
+                    <span class="fab fa-discord"></span>
+                </a>
+                <a href="https://steamcommunity.com/profiles/76561198132912683/" target="_blank" rel="noopener noreferrer">
+                    <span class="fab fa-steam"></span>
+                </a>
+            </div>
+        </footer>
     </div>
 </body>
 </html>
