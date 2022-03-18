@@ -4,9 +4,10 @@ body{
     padding: 0;
     font-family: 'Fredoka', sans-serif;
     color: rgb(var(--main));
-    --light: 238, 238, 238;
-    --dark: 105, 105, 105;
-    --main: 42, 103, 206;
+    background-color: rgb(var(--dark));
+    --light: 255, 255, 255;
+    --dark: 28, 28, 28;
+    --main: 106, 255, 151;
 }
 
 html{
@@ -14,10 +15,8 @@ html{
 }
 
 .navbar{
-    position: fixed;
-    width: 100%;
+    position: sticky;
     top: 0;
-    background-color: white;
 }
 
 .navbar.responsive li:not(.icon){
@@ -58,12 +57,12 @@ html{
 
 .active{
     background-color: rgb(var(--main));
-    color: rgb(var(--light));
+    color: rgb(var(--dark));
     font-weight: bold;
 }
 
 .frame-buttom{
-    box-shadow: 0px 0px 10px 0px rgb(var(--dark));
+    border-bottom: 1px solid rgba(var(--light), .2);
 }
 
 a{
@@ -102,17 +101,21 @@ a:hover{
 }
 
 .intro{
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .intro h1{
     font-size: 3.5rem;
     font-weight: normal;
     margin: 1rem 0;
+    text-align: center;
 }
 
 #page{
-    margin: 15vh 2vw;
+    margin: 8vh 2vw;
 }
 
 ::-webkit-scrollbar{
@@ -136,8 +139,15 @@ a:hover{
         font-size: 20px;
     }
 
+    .navbar{
+        margin: 0 5rem;
+        padding-top: 4rem;
+    }
+
     .navbar li:not(.active, .icon):hover{
-        box-shadow: inset 0 -12px 0 0 rgb(var(--main));
+        box-shadow:
+            inset 0 -.5rem 0 0 rgb(var(--main)),
+            inset 0 .5rem 0 0 rgb(var(--main));
     }
 
     .navbar .icon{
@@ -149,5 +159,10 @@ a:hover{
         display: block;
         float: left;
         width: auto;
+        margin: 0 1rem;
+    }
+
+    .frame-buttom{
+        border: none;
     }
 }

@@ -28,10 +28,5 @@ async function info(){
 
 function toggleHamburger(){
     let nav = document.getElementById("nav");
-    if(nav.className === "navbar frame-buttom"){
-        nav.className += " responsive";
-    }
-    else {
-        nav.className = "navbar frame-buttom";
-    }
+    nav.classList.toggle("responsive");
 }
