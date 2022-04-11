@@ -14,6 +14,12 @@ document.addEventListener("scroll", () => {
         setActiveNav(document.getElementById("nav-about"));
         return;
     }
+
+    const xp = document.getElementById("xp");
+    if(isElementWithinView(xp)){
+        setActiveNav(document.getElementById("nav-xp"));
+        return;
+    }
 });
 
 function toggleHamburger(){
