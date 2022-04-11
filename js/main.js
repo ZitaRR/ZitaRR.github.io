@@ -22,6 +22,10 @@ document.addEventListener("scroll", () => {
     }
 });
 
+function submitContact(){
+
+}
+
 function toggleHamburger(){
     const nav = document.getElementById("nav");
     nav.classList.toggle("responsive");
