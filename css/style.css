@@ -90,7 +90,8 @@ a:hover{
 }
 
 section{
-    height: 90vh;
+    min-height: 100vh;
+    height: 100%;
     margin: 0 1rem;
 }
 
