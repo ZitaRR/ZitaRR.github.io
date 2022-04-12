@@ -85,7 +85,7 @@ function setActiveNav(nav){
 function submitContact(){
     const subject = document.getElementById("subject").value;
     const message = document.getElementById("message").value;
-    document.location.href = `mailto: Haeggqvist1998@hotmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`
+    document.location = `mailto: Haeggqvist1998@hotmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`
 }
 
 function validateContactSubject(input){
