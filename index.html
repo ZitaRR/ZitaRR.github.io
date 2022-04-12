@@ -37,6 +37,7 @@
             <p>Software Student & Game-Developer Enthusiast</p>
         </section>
         <section id="about" class="flex-container">
+            <h1>whoami</h1>
             <p class="text-container">
                 Gaming has always been a big part of my life and as a kid I was intrigued by it.
                  <br>
@@ -155,33 +156,32 @@
                 </div>
             </div>
         </section>
-        <form onsubmit="return submitContact()">
-            <p id="subject-error">Cannot be empty</p>
-            <input id="subject" type="text" placeholder="Subject...">
-            <p id="message-error">Cannot be empty and must consist of at least 30 characters</p>
-            <textarea id="message" placeholder="Your message..." rows="10"></textarea>
+        <form action="https://formsubmit.co/6c7bd0906689894f07cdaaaae771b052" method="post" target="_blank" role="noopener noreferrer">
+            <p id="name-error">Cannot be empty</p>
+            <input id="name" name="name" type="text" placeholder="Your name...">
+            <p id="email-error">Cannot be empty and must contain a valid E-mail address</p>
+            <input id="email" name="email" type="email" placeholder="Your E-mail...">
+            <p id="message-error">Cannot be empty and must consist of at least 100 characters</p>
+            <textarea id="message" name="message" placeholder="Your message..." rows="10"></textarea>
             <input id="contactSubmit" type="submit" value="Send">
         </form>
-        <footer class="frame-top">
-            <div>
-                <p><span class="fa-solid fa-envelope"></span> E-mail</p>
-                <a href="mailto: haeggqvist1998@outlook.com">Haeggqvist1998@outlook.com</a>
-            </div>
-            <div class="social">
-                <a href="https://github.com/ZitaRR" target="_blank" rel="noopener noreferrer">
-                    <span class="fab fa-github"></span>
-                </a>
-                <a href="https://www.linkedin.com/in/nicklas-haggqvist/" target="_blank" rel="noopener noreferrer">
-                    <span class="fab fa-linkedin"></span>
-                </a>
-                <a href="https://discord.com/users/171731188900298752" target="_blank" rel="noopener noreferrer">
-                    <span class="fab fa-discord"></span>
-                </a>
-                <a href="https://steamcommunity.com/profiles/76561198132912683/" target="_blank" rel="noopener noreferrer">
-                    <span class="fab fa-steam"></span>
-                </a>
-            </div>
-        </footer>
     </div>
+    <footer class="frame-top">
+        <div class="social">
+            <a href="https://github.com/ZitaRR" target="_blank" rel="noopener noreferrer">
+                <span class="fab fa-github"></span>
+            </a>
+            <a href="https://www.linkedin.com/in/nicklas-haggqvist/" target="_blank" rel="noopener noreferrer">
+                <span class="fab fa-linkedin"></span>
+            </a>
+            <a href="https://discord.com/users/171731188900298752" target="_blank" rel="noopener noreferrer">
+                <span class="fab fa-discord"></span>
+            </a>
+            <a href="https://steamcommunity.com/profiles/76561198132912683/" target="_blank" rel="noopener noreferrer">
+                <span class="fab fa-steam"></span>
+            </a>
+        </div>
+        <p class="copy">Nicklas Häggqvist <span class="far fa-copyright"></span> 2022</p>
+    </footer>
 </body>
 </html>

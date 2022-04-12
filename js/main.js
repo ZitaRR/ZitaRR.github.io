@@ -1,11 +1,15 @@
+const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
 document.addEventListener("DOMContentLoaded", () => {
     console.log("DOM loaded");
-    const subject = document.getElementById("subject");
+    const name = document.getElementById("name");
+    const email = document.getElementById("email");
     const message = document.getElementById("message");
 
     validateContactForm();
 
-    subject.addEventListener("input", () => validateContactForm());
+    name.addEventListener("input", () => validateContactForm());
+    email.addEventListener("input", () => validateContactForm());
     message.addEventListener("input", () => validateContactForm());
 });
 
@@ -82,14 +86,8 @@ function setActiveNav(nav){
     nav.classList.toggle("active");
 }
 
-function submitContact(){
-    const subject = document.getElementById("subject").value;
-    const message = document.getElementById("message").value;
-    document.location = `mailto: Haeggqvist1998@hotmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`
-}
-
-function validateContactSubject(input){
-    const error = document.getElementById("subject-error");
+function validateContactName(input){
+    const error = document.getElementById("name-error");
     if(!input){
         error.style.display = "block";
         return false;
@@ -101,7 +99,18 @@ function validateContactSubject(input){
 
 function validateContactMessage(input){
     const error = document.getElementById("message-error");
-    if(!input || input.length < 30){
+    if(!input || input.length < 100){
+        error.style.display = "block";
+        return false;
+    }
+
+    error.style.display = "none";
+    return true;
+}
+
+function validateContactEmail(input){
+    const error = document.getElementById("email-error");
+    if(!input || !emailRegex.test(input)){
         error.style.display = "block";
         return false;
     }
@@ -121,14 +130,16 @@ function tryDisplayError(element, validate){
 }
 
 function validateContactForm(){
-    const subject = document.getElementById("subject");
+    const name = document.getElementById("name");
+    const email = document.getElementById("email");
     const message = document.getElementById("message");
     const submit = document.getElementById("contactSubmit");
 
-    const validSubject = tryDisplayError(subject, () => validateContactSubject(subject.value));
+    const validName = tryDisplayError(name, () => validateContactName(name.value));
+    const validEmail = tryDisplayError(email, () => validateContactEmail(email.value));
     const validMessage = tryDisplayError(message, () => validateContactMessage(message.value));
 
-    if(validSubject || validMessage){
+    if(validName || validMessage || validEmail){
         submit.disabled = true;
         return;
     }
