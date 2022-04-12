@@ -155,11 +155,12 @@
                 </div>
             </div>
         </section>
-        <form onsubmit="submitContact()">
-            <input type="email" id="email" placeholder="Your E-mail...">
-            <input type="text" id="subject" placeholder="Subject...">
+        <form onsubmit="return submitContact()">
+            <p id="subject-error">Cannot be empty</p>
+            <input id="subject" type="text" placeholder="Subject...">
+            <p id="message-error">Cannot be empty and must be consist of at least 30 characters</p>
             <textarea id="message" placeholder="Your message..." rows="10"></textarea>
-            <input type="submit" value="Send">
+            <input id="contactSubmit" type="submit" value="Send">
         </form>
         <footer class="frame-top">
             <div>

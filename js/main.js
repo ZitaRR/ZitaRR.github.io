@@ -1,5 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
     console.log("DOM loaded");
+    const subject = document.getElementById("subject");
+    const message = document.getElementById("message");
+
+    validateContactForm();
+
+    subject.addEventListener("input", () => validateContactForm());
+    message.addEventListener("input", () => validateContactForm());
 });
 
 document.addEventListener("scroll", () => {
@@ -21,10 +28,6 @@ document.addEventListener("scroll", () => {
         return;
     }
 });
-
-function submitContact(){
-
-}
 
 function toggleHamburger(){
     const nav = document.getElementById("nav");
@@ -77,4 +80,58 @@ function setActiveNav(nav){
 
     current.classList.toggle("active");
     nav.classList.toggle("active");
+}
+
+function submitContact(){
+    const subject = document.getElementById("subject").value;
+    const message = document.getElementById("message").value;
+    document.location.href = `mailto: Haeggqvist1998@hotmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`
+}
+
+function validateContactSubject(input){
+    const error = document.getElementById("subject-error");
+    if(!input){
+        error.style.display = "block";
+        return false;
+    }
+
+    error.style.display = "none";
+    return true;
+}
+
+function validateContactMessage(input){
+    const error = document.getElementById("message-error");
+    if(!input || input.length < 30){
+        error.style.display = "block";
+        return false;
+    }
+
+    error.style.display = "none";
+    return true;
+}
+
+function tryDisplayError(element, validate){
+    if(!validate()){
+        element.classList.add("error");
+        return true;
+    }
+
+    element.classList.remove("error");
+    return false;
+}
+
+function validateContactForm(){
+    const subject = document.getElementById("subject");
+    const message = document.getElementById("message");
+    const submit = document.getElementById("contactSubmit");
+
+    const validSubject = tryDisplayError(subject, () => validateContactSubject(subject.value));
+    const validMessage = tryDisplayError(message, () => validateContactMessage(message.value));
+
+    if(validSubject || validMessage){
+        submit.disabled = true;
+        return;
+    }
+
+    submit.disabled = false;
 }
