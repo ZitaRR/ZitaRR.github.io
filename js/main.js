@@ -146,16 +146,3 @@ function validateContactForm(){
 
     submit.disabled = false;
 }
-
-function submitForm(form){
-    form.submit();
-    const elements = form.querySelectorAll("input, textarea");
-    for(let i = 0; i < elements.length; i++){
-        const element = elements[i];
-        if(element.getAttribute("type") === "submit"){
-            continue;
-        }
-
-        element.value = "";
-    }
-}
