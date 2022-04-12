@@ -148,6 +148,7 @@ function validateContactForm(){
 }
 
 function submitForm(form){
+    form.submit();
     const elements = form.querySelectorAll("input, textarea");
     for(let i = 0; i < elements.length; i++){
         const element = elements[i];
