@@ -53,6 +53,7 @@ html{
     white-space: nowrap;
     text-overflow: ellipsis;
     font-style: normal;
+    transition: all .2s linear;
 }
 
 .navbar .icon{
@@ -98,7 +99,7 @@ a:hover{
 
 section{
     min-height: 100vh;
-    width: 90%;
+    width: 95%;
 }
 
 .fa.fa-bars{
@@ -298,9 +299,18 @@ input[type=submit]:disabled{
 
     .navbar{
         position: fixed;
-        margin: 0 5rem;
-        padding-top: 4rem;
         background: transparent;
+        width: 100%;
+        margin: 5vw;
+        transition: all .2s linear;
+    }
+
+    .navbar.onscroll{
+        margin: 1vw;
+    }
+
+    .navbar.onscroll li a{
+        font-size: 1.8vw;
     }
 
     .navbar li:not(.active, .icon):hover{
@@ -318,7 +328,7 @@ input[type=submit]:disabled{
         display: block;
         float: left;
         width: auto;
-        margin: 0 1rem;
+        margin-right: 1rem;
     }
 
     .frame-buttom{

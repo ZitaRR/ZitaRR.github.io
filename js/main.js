@@ -11,6 +11,17 @@ document.addEventListener("DOMContentLoaded", () => {
     name.addEventListener("input", () => validateContactForm());
     email.addEventListener("input", () => validateContactForm());
     message.addEventListener("input", () => validateContactForm());
+
+    const nav = document.getElementById("nav");
+
+    window.onscroll = () =>{
+        if(document.body.scrollTop > 280 || document.documentElement.scrollTop > 280){
+            nav.classList.add("onscroll");
+        }
+        else{
+            nav.classList.remove("onscroll");
+        }
+    };
 });
 
 document.addEventListener("scroll", () => {
