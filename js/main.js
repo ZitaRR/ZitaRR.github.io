@@ -1,46 +1,39 @@
 const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
+let sections = [];
+let navs = [];
+
 document.addEventListener("DOMContentLoaded", () => {
     console.log("DOM loaded");
     const name = document.getElementById("name");
     const email = document.getElementById("email");
     const message = document.getElementById("message");
 
+    sections = document.querySelectorAll("[id^='section-']");
+    navs = document.querySelectorAll("[id^='nav-']");
+
     validateContactForm();
 
     name.addEventListener("input", () => validateContactForm());
     email.addEventListener("input", () => validateContactForm());
     message.addEventListener("input", () => validateContactForm());
-
-    const nav = document.getElementById("nav");
-
-    window.onscroll = () =>{
-        if(document.body.scrollTop > 280 || document.documentElement.scrollTop > 280){
-            nav.classList.add("onscroll");
-        }
-        else{
-            nav.classList.remove("onscroll");
-        }
-    };
 });
 
 document.addEventListener("scroll", () => {
-    const home = document.getElementById("home");
-    if(isElementWithinView(home)){
-        setActiveNav(document.getElementById("nav-home"));
-        return;
+    for(let i = 0; i < sections.length; i++){
+        const section = sections[i];
+        if(isElementWithinView(section)){
+            setActiveNav(navs[i]);
+        }
     }
 
-    const about = document.getElementById("about");
-    if(isElementWithinView(about)){
-        setActiveNav(document.getElementById("nav-about"));
-        return;
-    }
+    const nav = document.getElementById("nav");
 
-    const xp = document.getElementById("xp");
-    if(isElementWithinView(xp)){
-        setActiveNav(document.getElementById("nav-xp"));
-        return;
+    if(document.body.scrollTop > 280 || document.documentElement.scrollTop > 280){
+        nav.classList.add("onscroll");
+    }
+    else{
+        nav.classList.remove("onscroll");
     }
 });
 
