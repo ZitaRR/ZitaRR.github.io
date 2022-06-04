@@ -2,6 +2,8 @@ const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@
 
 let sections = [];
 let navs = [];
+let projects = [];
+let projectIndex = 0;
 
 document.addEventListener("DOMContentLoaded", () => {
     console.log("DOM loaded");
@@ -11,7 +13,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     sections = document.querySelectorAll("[id^='section-']");
     navs = document.querySelectorAll("[id^='nav-']");
+    projects = document.querySelector(".carousel .content").children;
 
+    goToProject(projectIndex);
     validateContactForm();
 
     name.addEventListener("input", () => validateContactForm());
@@ -149,4 +153,33 @@ function validateContactForm(){
     }
 
     submit.disabled = false;
+}
+
+function nextProject(){
+    projects[projectIndex].classList.toggle("active");
+    if(++projectIndex >= projects.length){
+        projectIndex = 0;
+    }
+
+    projects[projectIndex].classList.toggle("active");
+}
+
+function previousProject(){
+    projects[projectIndex].classList.toggle("active");
+    if(--projectIndex <= 0){
+        projectIndex = projects.length - 1;
+    }
+
+    projects[projectIndex].classList.toggle("active");
+}
+
+function goToProject(index){
+    if(projectIndex === index){
+        projects[projectIndex].classList.add("active");
+        return;
+    }
+
+    projects[projectIndex].classList.toggle("active");
+    projectIndex = index;
+    projects[projectIndex].classList.toggle("active");
 }
