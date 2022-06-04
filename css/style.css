@@ -305,14 +305,6 @@ input[type=submit]:disabled{
         transition: all .2s linear;
     }
 
-    .navbar.onscroll{
-        margin: 1vw;
-    }
-
-    .navbar.onscroll li a{
-        font-size: 1.8vw;
-    }
-
     .navbar li:not(.active, .icon):hover{
         box-shadow:
             inset 0 -.5rem 0 0 rgb(var(--main)),
@@ -326,9 +318,19 @@ input[type=submit]:disabled{
     .navbar li:not(.icon),
     .navbar:not(.responsive) li:not(.icon){
         display: block;
-        float: left;
-        width: auto;
-        margin-right: 1rem;
+        float: none;
+        min-width: 12%;
+        width: fit-content;
+        text-align: center;
+        margin: 1rem 0;
+    }
+
+    .navbar.onscroll{
+        margin: 1vw;
+    }
+
+    .navbar.onscroll li a{
+        font-size: 1.8vw;
     }
 
     .frame-buttom{
