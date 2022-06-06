@@ -1,9 +1,11 @@
 const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+const carouselInterval = 6 * 1000;
 
 let sections = [];
 let navs = [];
 let projects = [];
 let projectIndex = 0;
+let carouselTimer;
 
 document.addEventListener("DOMContentLoaded", () => {
     console.log("DOM loaded");
@@ -17,6 +19,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     goToProject(projectIndex);
     validateContactForm();
+
+    carouselTimer = setInterval(() => nextProject(), carouselInterval);
 
     name.addEventListener("input", () => validateContactForm());
     email.addEventListener("input", () => validateContactForm());
@@ -155,28 +159,29 @@ function validateContactForm(){
     submit.disabled = false;
 }
 
-function nextProject(){
-    projects[projectIndex].classList.toggle("active");
-    if(++projectIndex >= projects.length){
-        projectIndex = 0;
-    }
-
-    projects[projectIndex].classList.toggle("active");
+function nextProject(input){
+    goToProject(projectIndex + 1, input);
 }
 
-function previousProject(){
-    projects[projectIndex].classList.toggle("active");
-    if(--projectIndex <= 0){
-        projectIndex = projects.length - 1;
-    }
-
-    projects[projectIndex].classList.toggle("active");
+function previousProject(input){
+    goToProject(projectIndex - 1, input);
 }
 
-function goToProject(index){
+function goToProject(index, input){
+    if(input){
+        clearInterval(carouselTimer);
+        setInterval(() => nextProject(), carouselInterval);
+    }
     if(projectIndex === index){
         projects[projectIndex].classList.add("active");
         return;
+    }
+
+    if(index >= projects.length){
+        index = 0;
+    }
+    else if(index < 0){
+        index = projects.length - 1;
     }
 
     projects[projectIndex].classList.toggle("active");
