@@ -4,6 +4,7 @@ const carouselInterval = 6 * 1000;
 let sections = [];
 let navs = [];
 let projects = [];
+let slides;
 let projectIndex = 0;
 let carouselTimer;
 
@@ -15,7 +16,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     sections = document.querySelectorAll("[id^='section-']");
     navs = document.querySelectorAll("[id^='nav-']");
-    projects = document.querySelector(".carousel .content").children;
+    projects = document.querySelectorAll(".carousel .content .card");
+    slides = document.querySelector(".carousel .slides");
+
+    for(let i = 0; i < projects.length; i++){
+        const slide = document.createElement("i");
+        slide.classList.add("fa-solid", "fa-circle");
+        slide.onclick = () => goToProject(i, true);
+        slides.appendChild(slide);
+    }
 
     goToProject(projectIndex);
     validateContactForm();
@@ -170,10 +179,11 @@ function previousProject(input){
 function goToProject(index, input){
     if(input){
         clearInterval(carouselTimer);
-        setInterval(() => nextProject(), carouselInterval);
+        carouselTimer = setInterval(() => nextProject(), carouselInterval);
     }
     if(projectIndex === index){
         projects[projectIndex].classList.add("active");
+        slides.children[projectIndex].classList.add("active");
         return;
     }
 
@@ -185,6 +195,8 @@ function goToProject(index, input){
     }
 
     projects[projectIndex].classList.toggle("active");
+    slides.children[projectIndex].classList.toggle("active");
     projectIndex = index;
     projects[projectIndex].classList.toggle("active");
+    slides.children[projectIndex].classList.toggle("active");
 }

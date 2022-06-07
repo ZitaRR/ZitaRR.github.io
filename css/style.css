@@ -66,7 +66,7 @@ html{
     width: 100%;
 }
 
-.active{
+.navbar li.active{
     background-color: rgb(var(--main));
     color: rgb(var(--dark));
     font-weight: bold;
@@ -170,6 +170,28 @@ section{
     display: flex;
     width: 100%;
     height: 55vh;
+    justify-content: center;
+}
+
+.carousel .slides{
+    position: inherit;
+    top: 100%;
+}
+
+.carousel .slides *{
+    margin: 0 .25rem;
+}
+
+.carousel .slides *.active{
+    opacity: 1;
+}
+
+.carousel .slides *:not(.active){
+    opacity: .2;
+}
+
+.carousel .slides *:hover{
+    cursor: pointer;
 }
 
 .carousel .content .card{
@@ -178,6 +200,7 @@ section{
     width: 100%;
     height: 100%;
     top: 0;
+    left: 0;
     margin: 0;
     background-color: transparent;
 }
