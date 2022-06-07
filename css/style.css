@@ -210,12 +210,12 @@ section{
     height: 100%;
     margin: 0;
     object-fit: cover;
-    transition: opacity 1s linear;
+    transition: opacity 1.5s linear;
 }
 
 .carousel .content .card:not(.active) img{
     opacity: 0;
-    transition: opacity 1s linear;
+    transition: opacity 1.5s linear;
 }
 
 img:hover{

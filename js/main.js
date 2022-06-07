@@ -1,5 +1,5 @@
 const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-const carouselInterval = 6 * 1000;
+const carouselInterval = 8 * 1000;
 
 let sections = [];
 let navs = [];
