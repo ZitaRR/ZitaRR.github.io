@@ -202,7 +202,15 @@ section{
     top: 0;
     left: 0;
     margin: 0;
-    background-color: transparent;
+    opacity: 1;
+    transition: opacity 1s linear;
+}
+
+.carousel .content .card:not(.active){
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 1s linear;
 }
 
 .carousel .content .card img{
@@ -210,16 +218,6 @@ section{
     height: 100%;
     margin: 0;
     object-fit: cover;
-    transition: opacity 1.5s linear;
-}
-
-.carousel .content .card:not(.active) img{
-    opacity: 0;
-    transition: opacity 1.5s linear;
-}
-
-img:hover{
-    cursor: pointer;
 }
 
 .carousel .content .card.active .overlay{
@@ -227,22 +225,30 @@ img:hover{
     height: 25%;
     width: 100%;
     bottom: -1rem;
-    padding-top: 5%;
-    background-image: linear-gradient(to top, rgba(var(--main), .9), rgba(var(--main), 0));
+    padding-top: 0%;
+    background-image: linear-gradient(to top, rgba(var(--main), 100%), rgba(var(--main), 60%));
     color: rgb(var(--dark));
 }
 
 .carousel .content .card.active .overlay *{
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    font-style: normal;
 }
 
 .carousel .input{
     position: absolute;
-    top: 40%;
+    top: 37.77%;
     font-size: 2.5rem;
     padding: 1rem;
+}
+
+.carousel .content .card:hover{
+    cursor: pointer;
 }
 
 .carousel .input:hover{
@@ -401,10 +407,9 @@ input[type=submit]:disabled{
     .navbar{
         position: fixed;
         background: transparent;
-        width: 100%;
+        width: auto;
         margin: 5vw;
         transition: all .2s linear;
-        z-index: 0;
     }
 
     .navbar li:not(.active, .icon):hover{
