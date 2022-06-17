@@ -1,4 +1,12 @@
 const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+const carouselInterval = 8 * 1000;
+
+let sections = [];
+let navs = [];
+let projects = [];
+let slides;
+let projectIndex = 0;
+let carouselTimer;
 
 document.addEventListener("DOMContentLoaded", () => {
     console.log("DOM loaded");
@@ -6,41 +14,43 @@ document.addEventListener("DOMContentLoaded", () => {
     const email = document.getElementById("email");
     const message = document.getElementById("message");
 
+    sections = document.querySelectorAll("[id^='section-']");
+    navs = document.querySelectorAll("[id^='nav-']");
+    projects = document.querySelectorAll(".carousel .content .card");
+    slides = document.querySelector(".carousel .slides");
+
+    for(let i = 0; i < projects.length; i++){
+        const slide = document.createElement("i");
+        slide.classList.add("fa-solid", "fa-circle");
+        slide.onclick = () => goToProject(i, true);
+        slides.appendChild(slide);
+    }
+
+    goToProject(projectIndex);
     validateContactForm();
+
+    carouselTimer = setInterval(() => nextProject(), carouselInterval);
 
     name.addEventListener("input", () => validateContactForm());
     email.addEventListener("input", () => validateContactForm());
     message.addEventListener("input", () => validateContactForm());
-
-    const nav = document.getElementById("nav");
-
-    window.onscroll = () =>{
-        if(document.body.scrollTop > 280 || document.documentElement.scrollTop > 280){
-            nav.classList.add("onscroll");
-        }
-        else{
-            nav.classList.remove("onscroll");
-        }
-    };
 });
 
 document.addEventListener("scroll", () => {
-    const home = document.getElementById("home");
-    if(isElementWithinView(home)){
-        setActiveNav(document.getElementById("nav-home"));
-        return;
+    for(let i = 0; i < sections.length; i++){
+        const section = sections[i];
+        if(isElementWithinView(section)){
+            setActiveNav(navs[i]);
+        }
     }
 
-    const about = document.getElementById("about");
-    if(isElementWithinView(about)){
-        setActiveNav(document.getElementById("nav-about"));
-        return;
-    }
+    const nav = document.getElementById("nav");
 
-    const xp = document.getElementById("xp");
-    if(isElementWithinView(xp)){
-        setActiveNav(document.getElementById("nav-xp"));
-        return;
+    if(document.body.scrollTop > 280 || document.documentElement.scrollTop > 280){
+        nav.classList.add("onscroll");
+    }
+    else{
+        nav.classList.remove("onscroll");
     }
 });
 
@@ -156,4 +166,37 @@ function validateContactForm(){
     }
 
     submit.disabled = false;
+}
+
+function nextProject(input){
+    goToProject(projectIndex + 1, input);
+}
+
+function previousProject(input){
+    goToProject(projectIndex - 1, input);
+}
+
+function goToProject(index, input){
+    if(input){
+        clearInterval(carouselTimer);
+        carouselTimer = setInterval(() => nextProject(), carouselInterval);
+    }
+    if(projectIndex === index){
+        projects[projectIndex].classList.add("active");
+        slides.children[projectIndex].classList.add("active");
+        return;
+    }
+
+    if(index >= projects.length){
+        index = 0;
+    }
+    else if(index < 0){
+        index = projects.length - 1;
+    }
+
+    projects[projectIndex].classList.toggle("active");
+    slides.children[projectIndex].classList.toggle("active");
+    projectIndex = index;
+    projects[projectIndex].classList.toggle("active");
+    slides.children[projectIndex].classList.toggle("active");
 }

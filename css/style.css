@@ -24,6 +24,7 @@ html{
     position: sticky;
     top: 0;
     background-color: rgb(var(--dark));
+    z-index: 1;
 }
 
 .navbar.responsive li:not(.icon){
@@ -65,7 +66,7 @@ html{
     width: 100%;
 }
 
-.active{
+.navbar li.active{
     background-color: rgb(var(--main));
     color: rgb(var(--dark));
     font-weight: bold;
@@ -162,6 +163,112 @@ section{
 
 .error{
     border: 1px solid rgb(var(--warn));
+}
+
+.carousel{
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 55vh;
+    justify-content: center;
+}
+
+.carousel .slides{
+    position: inherit;
+    top: 100%;
+}
+
+.carousel .slides *{
+    margin: 0 .25rem;
+}
+
+.carousel .slides *.active{
+    opacity: 1;
+}
+
+.carousel .slides *:not(.active){
+    opacity: .2;
+}
+
+.carousel .slides *:hover{
+    cursor: pointer;
+}
+
+.carousel .content .card{
+    position: absolute;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    margin: 0;
+    opacity: 1;
+    transition: opacity 1s linear;
+}
+
+.carousel .content .card:not(.active){
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 1s linear;
+}
+
+.carousel .content .card img{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    object-fit: cover;
+}
+
+.carousel .content .card.active .overlay{
+    position: absolute;
+    height: 25%;
+    width: 100%;
+    bottom: -1rem;
+    padding-top: 0%;
+    background-image: linear-gradient(to top, rgba(var(--main), 100%), rgba(var(--main), 60%));
+    color: rgb(var(--dark));
+}
+
+.carousel .content .card.active .overlay *{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    font-style: normal;
+}
+
+.carousel .input{
+    position: absolute;
+    top: 37.77%;
+    font-size: 2.5rem;
+    padding: 1rem;
+}
+
+.carousel .content .card:hover{
+    cursor: pointer;
+}
+
+.carousel .input:hover{
+    background-color: rgba(var(--dark), .6);
+}
+
+.carousel .input:nth-child(2){
+    left: 0;
+}
+
+.carousel .input:nth-child(3){
+    right: 0;
+}
+
+.carousel .input:hover{
+    cursor: pointer;
+}
+
+.carousel .content .card.active:hover{
+    cursor: pointer;
 }
 
 section h1{
@@ -300,17 +407,9 @@ input[type=submit]:disabled{
     .navbar{
         position: fixed;
         background: transparent;
-        width: 100%;
+        width: auto;
         margin: 5vw;
         transition: all .2s linear;
-    }
-
-    .navbar.onscroll{
-        margin: 1vw;
-    }
-
-    .navbar.onscroll li a{
-        font-size: 1.8vw;
     }
 
     .navbar li:not(.active, .icon):hover{
@@ -326,9 +425,19 @@ input[type=submit]:disabled{
     .navbar li:not(.icon),
     .navbar:not(.responsive) li:not(.icon){
         display: block;
-        float: left;
-        width: auto;
-        margin-right: 1rem;
+        float: none;
+        min-width: 12%;
+        width: fit-content;
+        text-align: center;
+        margin: 1rem 0;
+    }
+
+    .navbar.onscroll{
+        margin: 1vw;
+    }
+
+    .navbar.onscroll li a{
+        font-size: 1.8vw;
     }
 
     .frame-buttom{

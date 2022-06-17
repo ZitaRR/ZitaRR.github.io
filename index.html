@@ -21,23 +21,26 @@
                 </a>
             </li>
             <li id="nav-home" class="active">
-                <a onclick="goToSection('home')">Home</a>
+                <a onclick="goToSection('section-home')">Home</a>
             </li>
             <li id="nav-about">
-                <a onclick="goToSection('about')">About</a>
+                <a onclick="goToSection('section-about')">About</a>
+            </li>
+            <li id="nav-projects">
+                <a onclick="goToSection('section-projects')">Projects</a>
             </li>
             <li id="nav-xp">
-                <a onclick="goToSection('xp')">Skills</a>
+                <a onclick="goToSection('section-xp')">Skills</a>
             </li>
         </ul>
     </nav>
     <div id="page">
-        <section id="home" class="flex-container">
+        <section id="section-home" class="flex-container">
             <img class="round-image" src="assets/me.jpg" alt="it's a me">
             <h1>Nicklas Häggqvist</h1>
             <p>Software Student & Game-Developer Enthusiast</p>
         </section>
-        <section id="about" class="flex-container">
+        <section id="section-about" class="flex-container">
             <h1>whoami</h1>
             <p class="text-container">
                 Gaming has always been a big part of my life and as a kid I was intrigued by it.
@@ -56,7 +59,69 @@
                 <br>
             </p>
         </section>
-        <section id="xp" class="flex-container flex-top">
+        <section id="section-projects" class="flex-container">
+            <h1>Projects</h1>
+            <div class="carousel">
+                <div class="content">
+                    <a class="card" href="https://github.com/ZitaRR/Nix" target="_blank" rel="noopener noreferrer">
+                        <img src="assets/nix.png" alt="nix">
+                        <div class="overlay">
+                            <h2>Nix</h2>
+                            <p>
+                                Personal music Discord bot with an intutive console
+                                application UI.
+                                Built with love & .NET Core.
+                            </p>
+                        </div>
+                    </a>
+                    <a class="card" href="https://github.com/ZitaRR/Agon-s-Path" target="_blank" rel="noopener noreferrer">
+                        <img src="assets/agons_path.png" alt="agon's path">
+                        <div class="overlay">
+                            <h2>Agon's Path</h2>
+                            <p>
+                                A Roguelike RPG game that's still in very early stages.
+                                The development has grinded to a halt - only time will tell
+                                what will happen to this game.
+                            </p>
+                        </div>
+                    </a>
+                    <a class="card" href="https://github.com/ZitaRR/WebNET" target="_blank" rel="noopener noreferrer">
+                        <img src="assets/placeholder.jpg" alt="placeholder">
+                        <div class="overlay">
+                            <h2>WebNET</h2>
+                            <p>
+                                A very simple and personal websocket server.
+                            </p>
+                        </div>
+                    </a>
+                    <a class="card" href="https://github.com/ZitaRR/Mudify" target="_blank" rel="noopener noreferrer">
+                        <img src="assets/mudify.png" alt="placeholder">
+                        <div class="overlay">
+                            <h2>Mudify</h2>
+                            <p>
+                                A Spotify clone that's ironically powered by YouTube.
+                                Built with Mudblazor, hence the name 'Mudify'.
+                            </p>
+                        </div>
+                    </a>
+                    <a class="card" href="https://github.com/ZitaRR/Zomlypse" target="_blank" rel="noopener noreferrer">
+                        <img src="assets/placeholder.jpg" alt="placeholder">
+                        <div class="overlay">
+                            <h2>Zomlypse</h2>
+                            <p>
+                                A micromanagement simulation game, in a world over-run by zombies.
+                                Yes, another zombie game - because there is simply not enough of them.
+                            </p>
+                        </div>
+                    </a>
+                </div>
+                <i class="input fa-solid fa-angle-left" onclick="previousProject(true)"></i>
+                <i class="input fa-solid fa-angle-right" onclick="nextProject(true)"></i>
+                <div class="slides">
+                </div>
+            </div>
+        </section>
+        <section id="section-xp" class="flex-container flex-top">
             <h1>Tools & Languages</h1>
             <div class="icon-container">
                 <div>
